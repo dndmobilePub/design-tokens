@@ -20,7 +20,7 @@ function mergeSets(target, source) {
   for (const [key, value] of Object.entries(source)) {
     if (key.startsWith('$')) continue;
     if (value && typeof value === 'object' && !Array.isArray(value) &&
-        !Object.hasOwn(value, '$value') && !Object.hasOwn(value, 'value')) {
+      !Object.hasOwn(value, '$value') && !Object.hasOwn(value, 'value')) {
       target[key] = mergeSets(target[key] ?? {}, value);
     } else {
       target[key] = structuredClone(value);
@@ -42,8 +42,8 @@ function namespaceTokens(tree, theme) {
 
 function validateValue(value, path) {
   if (value === null || value === undefined ||
-      (typeof value === 'number' && !Number.isFinite(value)) ||
-      (typeof value === 'string' && /\{[^{}]+\}/.test(value))) {
+    (typeof value === 'number' && !Number.isFinite(value)) ||
+    (typeof value === 'string' && /\{[^{}]+\}/.test(value))) {
     throw new Error(`Invalid or unresolved token: ${path}`);
   }
   if (typeof value === 'object') {
@@ -76,12 +76,12 @@ const dictionary = new StyleDictionary({
     scss: {
       transforms,
       buildPath: 'src/generated/',
-      files: [{ destination: '_tokens.scss', format: 'scss/variables', options: { showFileHeader: false } }],
+      files: [{ destination: '_variables.scss', format: 'scss/variables', options: { showFileHeader: false } }],
     },
     javascript: {
       transforms,
       buildPath: 'src/generated/',
-      files: [{ destination: 'tokens.js', format: 'javascript/object', options: { showFileHeader: false } }],
+      files: [{ destination: '_variables.js', format: 'javascript/esm', options: { showFileHeader: false, minify: true } }],
     },
   },
 });
@@ -93,8 +93,8 @@ for (const token of resolved.allTokens) {
 }
 
 // Fail the workflow if either generated file cannot be consumed.
-compileString(await readFile('src/generated/_tokens.scss', 'utf8'));
-const generated = await import(pathToFileURL(resolve('src/generated/tokens.js')).href);
+compileString(await readFile('src/generated/_variables.scss', 'utf8'));
+const generated = await import(pathToFileURL(resolve('src/generated/_variables.js')).href);
 validateValue(generated.default, 'generated');
 for (const theme of ['light', 'dark']) {
   if (!generated.default?.[theme] || !Object.keys(generated.default[theme]).length) {
