@@ -24,7 +24,7 @@ export default {
       "multi-value": "4px 8px",
     },
     colors: {
-      black: "#000000",
+      black: "#333333",
       white: "#ffffff",
       gray: {
         100: "#f7fafc",
@@ -179,7 +179,7 @@ export default {
       xs: "10.4px",
     },
     fg: {
-      default: "#000000",
+      default: "#333333",
       muted: "#4a5568",
       subtle: "#a0aec0",
     },
@@ -300,7 +300,7 @@ export default {
       "multi-value": "4px 8px",
     },
     colors: {
-      black: "#000000",
+      black: "#333333",
       white: "#ffffff",
       gray: {
         100: "#f7fafc",
@@ -470,7 +470,7 @@ export default {
       bg: "#434190",
     },
     shadows: {
-      default: "rgba(0, 0, 0, 0.3)",
+      default: "rgba(51, 51, 51, 0.3)",
     },
     button: {
       primary: {
@@ -489,7 +489,7 @@ export default {
       default: {
         1: {
           spread: "3px",
-          color: "rgba(rgba(0, 0, 0, 0.3), 0.15)",
+          color: "rgba(rgba(51, 51, 51, 0.3), 0.15)",
           blur: "5px",
           type: "dropShadow",
           offsetX: "5px",
