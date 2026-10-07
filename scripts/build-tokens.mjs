@@ -65,7 +65,7 @@ for (const theme of ['light', 'dark']) {
 
 await register(StyleDictionary, { excludeParentKeys: false });
 const transforms = [...getTransforms({ platform: 'css' }), 'name/kebab'];
-await mkdir('src/generated', { recursive: true });
+await mkdir('src/tokens', { recursive: true });
 const dictionary = new StyleDictionary({
   tokens,
   usesDtcg: true,
@@ -75,12 +75,12 @@ const dictionary = new StyleDictionary({
   platforms: {
     scss: {
       transforms,
-      buildPath: 'src/generated/',
+      buildPath: 'src/tokens/',
       files: [{ destination: '_variables.scss', format: 'scss/variables', options: { showFileHeader: false } }],
     },
     javascript: {
       transforms,
-      buildPath: 'src/generated/',
+      buildPath: 'src/tokens/',
       files: [{ destination: '_variables.js', format: 'javascript/esm', options: { showFileHeader: false, minify: true } }],
     },
   },
@@ -93,8 +93,8 @@ for (const token of resolved.allTokens) {
 }
 
 // Fail the workflow if either generated file cannot be consumed.
-compileString(await readFile('src/generated/_variables.scss', 'utf8'));
-const generated = await import(pathToFileURL(resolve('src/generated/_variables.js')).href);
+compileString(await readFile('src/tokens/_variables.scss', 'utf8'));
+const generated = await import(pathToFileURL(resolve('src/tokens/_variables.js')).href);
 validateValue(generated.default, 'generated');
 for (const theme of ['light', 'dark']) {
   if (!generated.default?.[theme] || !Object.keys(generated.default[theme]).length) {
