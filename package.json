@@ -17,10 +17,12 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "@tokens-studio/sd-transforms": "^2.0.3",
     "@vitejs/plugin-react": "^5.0.0",
     "sass": "^1.89.0",
     "style-dictionary": "^5.0.0",
+    "tailwindcss": "^4.3.3",
     "vite": "^7.0.0"
   }
 }
