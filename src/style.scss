@@ -1,1 +1,29 @@
-// 테스트할 SCSS 변수를 여기에 추가하세요.
+@use './tokens/variables' as tokens;
+
+body {
+  margin: 0;
+  padding: tokens.$light-spacing-lg;
+  background-color: tokens.$light-bg-default;
+}
+
+.sample-button {
+  padding: tokens.$light-spacing-md tokens.$light-spacing-lg;
+  border: 0;
+  border-radius: tokens.$light-border-radius-lg;
+  background-color: tokens.$light-colors-bubbleggum;
+  color: tokens.$light-fg-default;
+  font-family: tokens.$light-font-families-body, sans-serif;
+  font-size: tokens.$light-font-sizes-body;
+  font-weight: tokens.$light-font-weights-body-bold;
+  line-height: tokens.$light-line-heights-body;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid tokens.$light-fg-default;
+    outline-offset: tokens.$light-spacing-xs;
+  }
+
+  &:active {
+    opacity: tokens.$light-opacity-high;
+  }
+}
