@@ -15,6 +15,7 @@ export default {
       lg: "32px",
       xl: "64px",
       "multi-value": "8px 64px",
+      superbig: "60px",
     },
     borderRadius: {
       sm: "4px",
@@ -290,6 +291,7 @@ export default {
       lg: "32px",
       xl: "64px",
       "multi-value": "8px 64px",
+      superbig: "60px",
     },
     borderRadius: {
       sm: "4px",
