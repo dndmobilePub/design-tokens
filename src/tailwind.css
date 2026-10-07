@@ -1,0 +1,6 @@
+/* Load utilities without Preflight so the existing samples retain their styles. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@config '../tailwind.config.js';
+@custom-variant dark (&:where(.dark, .dark *));
