@@ -50,7 +50,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git add src/generated/_tokens.scss src/generated/tokens.js
+          git add src/generated/_variables.scss src/generated/_variables.js
           if ! git diff --cached --quiet; then
             git commit -m 'chore: generate SCSS and JavaScript tokens'
           fi
